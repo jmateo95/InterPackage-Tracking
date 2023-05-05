@@ -21,7 +21,7 @@ pipeline {
             }
         }
 
-        stage ('Desplegar Imgen de Docer'){
+        stage ('Desplegar Imgen de Docker'){
             steps{
                 script{
                     sh 'ssh root@167.172.108.85 "cd /home/Interpackage/docker && docker-compose up -d --build interpackage-service-tracking"'
