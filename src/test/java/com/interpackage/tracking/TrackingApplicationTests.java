@@ -1,10 +1,10 @@
 package com.interpackage.tracking;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
-@SpringBootTest
-class TrackingApplicationTests {
+@Testcontainers
+class TrackingApplicationTests extends AbstractIntegrationTest{
 
     @Test
     void contextLoads() {
