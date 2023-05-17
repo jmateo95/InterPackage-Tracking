@@ -21,7 +21,7 @@ public class Hola {
 
 
     @GetMapping("/hola/{name}")
-    @RequiredRole({"Admin"})
+    @RequiredRole({"Admin","Client"})
     public ResponseEntity<Object> getHola(@PathVariable String name) {
         return ResponseEntity.ok(
                 new HashMap<String, Object>() {{
@@ -32,7 +32,7 @@ public class Hola {
     }
 
     @GetMapping("/adios/{name}")
-    @RequiredRole({"test"})
+    @RequiredRole({"Admin", "role test"})
     public ResponseEntity<Object> getAdios(@PathVariable String name) {
         return ResponseEntity.ok(
                 new HashMap<String, Object>() {{
