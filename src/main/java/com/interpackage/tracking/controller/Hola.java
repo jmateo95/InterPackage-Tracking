@@ -19,7 +19,7 @@ public class Hola {
 
 
     @GetMapping("/hola/{name}")
-    @RequiredRole({"Admin"})
+    @RequiredRole({"Admin","Client"})
     public ResponseEntity<Object> getHola(@PathVariable String name) {
         return ResponseEntity.ok(
                 new HashMap<String, Object>() {{
@@ -30,13 +30,8 @@ public class Hola {
     }
 
     @GetMapping("/adios/{name}")
-    @RequiredRole({"User"})
+    @RequiredRole({"Admin", "role test"})
     public ResponseEntity<Object> getAdios(@PathVariable String name) {
-
-        String permissionsHeader = request.getHeader("permissions");
-        List<String> permissions = Arrays.asList(permissionsHeader.split(","));
-        System.out.println((permissions));
-
         return ResponseEntity.ok(
                 new HashMap<String, Object>() {{
                     put("mensaje", "Adios " + name);
