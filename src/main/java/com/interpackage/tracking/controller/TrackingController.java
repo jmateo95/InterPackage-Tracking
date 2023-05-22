@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
 
 @RestController
-@RequestMapping(Constants.API_TRACKING_V1 + "/tracking")
+@RequestMapping(Constants.API_TRACKING_V1)
 public class TrackingController {
 
     @Autowired
     private EventService eventService;
 
     @PostMapping("/tracking/")
-    @RequiredRole({Constants.OPERATOR_ROL})
+    @RequiredRole({Constants.ADMIN_ROL, Constants.OPERATOR_ROL})
     public ResponseEntity<Response> tracking(final @RequestBody Tracking tracking){
         try {
             // Lógica para el tracking
