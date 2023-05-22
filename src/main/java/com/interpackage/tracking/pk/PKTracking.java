@@ -9,6 +9,6 @@ import java.time.LocalDate;
 public class PKTracking implements Serializable {
     private Long idCellar;
     private Long idJourney;
-    private String idPackage;
+    private String idOrder;
     private LocalDate date;
 }

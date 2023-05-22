@@ -21,8 +21,8 @@ public class Tracking {
     private Long idJourney;
 
     @Id
-    @Column(columnDefinition = "TEXT", name = "id_package", nullable = false)
-    private String idPackage;
+    @Column(columnDefinition = "TEXT", name = "id_order", nullable = false)
+    private String idOrder;
 
     @Id
     @Column(nullable = false)
