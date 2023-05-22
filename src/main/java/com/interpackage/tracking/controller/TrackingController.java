@@ -1,5 +1,6 @@
 package com.interpackage.tracking.controller;
 
+import com.interpackage.tracking.aspect.RequiredRole;
 import com.interpackage.tracking.model.Response;
 import com.interpackage.tracking.model.Tracking;
 import com.interpackage.tracking.service.EventService;
@@ -21,7 +22,7 @@ public class TrackingController {
     private EventService eventService;
 
     @PostMapping("/tracking/")
-    //@RequiredRole({Constants.OPERATOR_ROL})
+    @RequiredRole({Constants.OPERATOR_ROL})
     public ResponseEntity<Response> tracking(final @RequestBody Tracking tracking){
         try {
             // Lógica para el tracking
