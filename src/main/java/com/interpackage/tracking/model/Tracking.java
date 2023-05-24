@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
-
+import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "tracking")
@@ -25,8 +25,8 @@ public class Tracking {
     private String idOrder;
 
     @Id
-    @Column(nullable = false)
-    private LocalDate date;
+    @Column(nullable = false,columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime date;
 
     @Column(nullable = false)
     private Boolean entered;

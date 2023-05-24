@@ -13,6 +13,7 @@ public final class Constants {
     public static final String MESSAGE_NOTIFICATION = "Notification";
     public static final String PENDING_STATE = "Pending";
     public static final String CHECK_IN_STATE = "Ingreso";
+    public static final String NOT_FOUND = "No se encontro la entidad";
 
     private Constants() {
     }
