@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @RestController
 @RequestMapping(Constants.API_TRACKING_V1)
@@ -34,8 +35,14 @@ public class TrackingController {
         try {
             // Lógica para el tracking
             tracking.setDate(LocalDateTime.now());
-            eventService.sendNotification(tracking);
-            return ResponseEntity.ok(new Response("Todo bien!", tracking));
+            ResponseEntity<Response> trackingSaved = trackingService.saveTracking(tracking);
+
+            // eventService.sendNotification(tracking);
+            eventService.sendNotification(
+                    (Tracking) Objects
+                            .requireNonNull(trackingSaved.getBody())
+                            .getResponseObject());
+            return trackingSaved;
         } catch (final Exception e) {
             return ResponseEntity
                     .internalServerError()

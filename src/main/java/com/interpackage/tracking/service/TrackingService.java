@@ -10,6 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 @Service
 public class TrackingService implements TrackingInterface {
@@ -26,5 +30,19 @@ public class TrackingService implements TrackingInterface {
                 .ok().body(new Response(tracking))).orElseGet(() -> ResponseEntity
                 .internalServerError()
                 .body(new Response(Constants.NOT_FOUND)));
+    }
+
+    @Override
+    public ResponseEntity<Response> saveTracking(Tracking tracking) {
+        try {
+            return new ResponseEntity<>(
+                    new Response(
+                            this.trackingRepository.save(tracking)),
+                    HttpStatus.CREATED);
+        } catch (DataIntegrityViolationException exception) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new Response(Constants.REQUIRED_FIELDS));
+        }
     }
 }

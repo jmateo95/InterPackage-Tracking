@@ -7,4 +7,6 @@ import org.springframework.http.ResponseEntity;
 public interface TrackingInterface {
     
     ResponseEntity<Response> getTrackingDetail(String orderId);
+
+    ResponseEntity<Response> saveTracking(Tracking tracking);
 }
