@@ -36,12 +36,7 @@ public class TrackingController {
             // Lógica para el tracking
             tracking.setDate(LocalDateTime.now());
             ResponseEntity<Response> trackingSaved = trackingService.saveTracking(tracking);
-
-            // eventService.sendNotification(tracking);
-            eventService.sendNotification(
-                    (Tracking) Objects
-                            .requireNonNull(trackingSaved.getBody())
-                            .getResponseObject());
+            eventService.sendNotification(tracking);
             return trackingSaved;
         } catch (final Exception e) {
             return ResponseEntity
