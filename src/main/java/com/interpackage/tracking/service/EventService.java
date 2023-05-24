@@ -7,6 +7,8 @@ import com.interpackage.tracking.producers.TrackingProducer;
 import com.interpackage.tracking.util.Constants;
 import org.springframework.stereotype.Service;
 
+import java.time.format.DateTimeFormatter;
+
 @Service
 public class EventService implements EventInterface {
 
@@ -26,7 +28,8 @@ public class EventService implements EventInterface {
                         tracking.getIdOrder(),
                         tracking.getCity(),
                         Constants.CHECK_IN_STATE,
-                        tracking.getDate().toString()
+                        tracking.getDate().format(DateTimeFormatter
+                                .ofPattern("dd/MM/yyyy HH:mm:ss"))
                 )
         );
         trackingProducer.sendMessage(event);
