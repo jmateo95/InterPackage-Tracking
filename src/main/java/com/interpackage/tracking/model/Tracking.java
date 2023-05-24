@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -26,23 +27,23 @@ public class Tracking {
 
     @Id
     @Column(nullable = false)
-    private LocalDate date;
+    private LocalDateTime date;
 
     @Column(nullable = false)
     private Boolean entered;
 
-    @Column(name = "partial_cost", scale = 3, nullable = false)
+    @Column(name = "partial_cost", scale = 3)
     private Float partialCost;
 
     @Column(nullable = false, length = 75)
     private String journey;
 
-    @Column(name = "photo_base64", nullable = true)
+    @Column(name = "photo_base64")
     private String photoBase64;
 
     @Column(nullable = false, length = 75)
     private String city;
 
-    @Column(nullable = true, length = 500)
+    @Column(length = 500)
     private String comment;
 }
